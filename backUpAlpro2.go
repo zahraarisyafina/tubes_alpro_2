@@ -56,6 +56,7 @@ func menuAwal() {
 	fmt.Println()
 }
 
+
 func menuUtama() {
 	/* IS :
 	- Program sedang berjalan dan siap menampilkan menu utama.
@@ -70,19 +71,20 @@ func menuUtama() {
 	fmt.Println("|                    DAFTAR MENU                           |")
 	fmt.Println("+==========================================================+")
 	fmt.Println("| 1. Tambah Produk Sembako                                 |")
-	fmt.Println("| 2. Tampilkan Data Produk                                 |")
+	fmt.Println("| 2. Tampilkan Data Produk                                 |") 
 	fmt.Println("| 3. Barang Masuk                                          |")
 	fmt.Println("| 4. Barang Keluar                                         |")
 	fmt.Println("| 5. Cari Produk                                           |")
-	fmt.Println("| 6. Edit Produk                                           |")
+	fmt.Println("| 6. Edit Produk                                           |") 
 	fmt.Println("| 7. Hapus Produk                                          |")
 	fmt.Println("| 8. Urutkan Produk                                        |")
 	fmt.Println("| 9. Laporan Barang Masuk dan Keluar                       |")
-	fmt.Println("| 10. Cari Stok Terbanyak dan Tersedikit                   |")
+	fmt.Println("| 10. Cari Stok Terbanyak dan Tersedikit                   |") 
 	fmt.Println("| 0. Keluar                                                |")
 	fmt.Println("+==========================================================+")
 	fmt.Print("Pilih menu: ")
 }
+
 
 func tampilKategori() {
 	/* IS :
@@ -100,6 +102,7 @@ func tampilKategori() {
 		fmt.Printf("%d. %s\n", categoryIndex+1, listKategori[categoryIndex])
 	}
 }
+
 
 func dataAwal(dataSembako *tabSembako, jumlahData *int) {
 	/* IS : dataSemabko dan jumlahData terdefinisi
@@ -119,15 +122,16 @@ func dataAwal(dataSembako *tabSembako, jumlahData *int) {
 	*jumlahData = 9
 }
 
+
 func tambahProduk(dataSembako *tabSembako, jumlahData *int) {
 	/*IS : - dataSembako dan JumlahData terdefinisi
-	           - jumlahData menyatakan banyaknya produk yang tersimpan.
+           - jumlahData menyatakan banyaknya produk yang tersimpan.
 
-		FS :
-		- Jika data yang dimasukkan valid dan kapasitas array belum penuh, maka produk baru ditambahkan ke dataSembako dan jumlahData
-		  bertambah 1.
-		- Jika data tidak valid atau array penuh, maka dataSembako dan jumlahData tidak berubah. */
-
+	FS :
+	- Jika data yang dimasukkan valid dan kapasitas array belum penuh, maka produk baru ditambahkan ke dataSembako dan jumlahData
+	  bertambah 1.
+	- Jika data tidak valid atau array penuh, maka dataSembako dan jumlahData tidak berubah. */
+	  
 	var pilihanKategori int
 
 	if *jumlahData >= NMAX {
@@ -179,9 +183,9 @@ func tambahProduk(dataSembako *tabSembako, jumlahData *int) {
 
 func tampilProduk(dataSembako tabSembako, jumlahData int) {
 	/* IS : data sembako dan jumlah data terdefinisi, dengan jumlah data > 0
-	FS : Menampilkan data produk meliputi nomor urut, kode, nama produk, kategori, harga, stok, jumlah keluar dan masuknya produk. Jika jumlah
-	data yang dimasukkan = 0 maka akan keluar "Belum ada data produk."*/
-
+		FS : Menampilkan data produk meliputi nomor urut, kode, nama produk, kategori, harga, stok, jumlah keluar dan masuknya produk. Jika jumlah
+		data yang dimasukkan = 0 maka akan keluar "Belum ada data produk."*/
+		
 	var productIndex int
 	if jumlahData == 0 {
 		fmt.Println("Belum ada data produk.")
@@ -204,7 +208,7 @@ func tampilProduk(dataSembako tabSembako, jumlahData int) {
 			)
 		}
 
-		fmt.Println("+==============================================================================================================+")
+	fmt.Println("+==============================================================================================================+")
 	}
 }
 
@@ -216,11 +220,11 @@ func cariProdukSequential(dataSembako tabSembako, jumlahData int, kodeProduk str
 			return productIndex
 		}
 	}
-	return -1
+	return -1 
 }
 
 func cariPNamabinary(dataSembako tabSembako, jumlahData int, namaProduk string) int {
-	/*dataSembako telah terurut menaik berdasarkan nama produk, jumlahData dan namaProduk terdefinisi. Mengembalikan idx produk yang
+	/*dataSembako telah terurut menaik berdasarkan nama produk, jumlahData dan namaProduk terdefinisi. Mengembalikan idx produk yang 
 	di cari berupa bilangan bulat dan jika produk tidak ditemukan maka akan mengembalikan idx dengan nilai -1*/
 	var left, right, mid int
 	var idx int
@@ -245,10 +249,10 @@ func cariPNamabinary(dataSembako tabSembako, jumlahData int, namaProduk string) 
 
 func barangMasuk(dataSembako *tabSembako, jumlahData int) {
 	/*IS : data sembako dan jumlah data terdefinisi
-			FS : jika data berupa kode produk yang dimasukkan valid serta jumlah barang masuk > 0 maka jumlah stok produk tersebut akan
-			bertambah sesuai dengan banyaknya barang masuk. Jika kode produk tidak ditemukan atau jumlahBarangMasuk <= 0,
-	        maka data tidak berubah.
-	*/
+		FS : jika data berupa kode produk yang dimasukkan valid serta jumlah barang masuk > 0 maka jumlah stok produk tersebut akan 
+		bertambah sesuai dengan banyaknya barang masuk. Jika kode produk tidak ditemukan atau jumlahBarangMasuk <= 0,
+        maka data tidak berubah.
+*/
 	var kodeProduk string
 	var jumlahBarangMasuk, productIndex int
 
@@ -280,10 +284,10 @@ func barangMasuk(dataSembako *tabSembako, jumlahData int) {
 
 func barangKeluar(dataSembako *tabSembako, jumlahData int) {
 	/*IS : data sembako dan jumlah data terdefinisi
-	FS : jika data berupa kode produk yang dimasukkan valid serta jumlah barang keluar > 0 maka jumlah stok produk tersebut akan
-	berkurang di kolom banyak stok, serta mengupdate data di kolom keluar sesuai dengan banyaknya barang keluar.
-	Jika kode produk tidak ditemukan atau jumlahBarangKeluar <= 0, maka data tidak berubah.
-	*/
+		FS : jika data berupa kode produk yang dimasukkan valid serta jumlah barang keluar > 0 maka jumlah stok produk tersebut akan 
+		berkurang di kolom banyak stok, serta mengupdate data di kolom keluar sesuai dengan banyaknya barang keluar. 
+		Jika kode produk tidak ditemukan atau jumlahBarangKeluar <= 0, maka data tidak berubah.
+*/
 	var kodeProduk string
 	var jumlahBarangKeluar, productIndex int
 
@@ -313,23 +317,23 @@ func barangKeluar(dataSembako *tabSembako, jumlahData int) {
 
 			fmt.Println("Barang keluar berhasil dicatat.")
 			fmt.Println("Stok terbaru:", dataSembako[productIndex].stok)
-		}
+		}	
 	}
 }
 
 func cariProdukSeq(dataSembako tabSembako, jumlahData int) {
 	/* IS :
-	   - dataSembako dan jumlahData terdefinisi.
+   - dataSembako dan jumlahData terdefinisi.
 
-	   FS :
-	   - Menampilkan data produk yang memiliki kode sesuai input pengguna.
-	   - Jika produk tidak ditemukan, menampilkan pesan bahwa produk tidak ditemukan.
-	*/
+   FS :
+   - Menampilkan data produk yang memiliki kode sesuai input pengguna.
+   - Jika produk tidak ditemukan, menampilkan pesan bahwa produk tidak ditemukan.
+*/
 	var kodeProduk string
 	var productIndex int
 
 	fmt.Println()
-	fmt.Println("+===========++====== CARI PRODUK =================+")
+	fmt.Println("+=================== CARI PRODUK =================+")
 	fmt.Print("Masukkan kode produk: ")
 	fmt.Scan(&kodeProduk)
 
@@ -349,30 +353,10 @@ func cariProdukSeq(dataSembako tabSembako, jumlahData int) {
 	}
 }
 
-func insertionSortKode(dataSembako tabSembako, jumlahData int) tabSembako {
-	/*dataSembako dan jumlahData terdefinisi dan jumlahData menyatakan banyaknya data yang akan diurutkan.
-	  mengembalikan dataSembako yang telah terurut menaik(ascending) berdasarkan kode produk.*/
-	var currentIndex, previousIndex int
-	var tempProduct daftarSembako
-
-	for currentIndex = 1; currentIndex < jumlahData; currentIndex++ {
-		tempProduct = dataSembako[currentIndex]
-		previousIndex = currentIndex - 1
-
-		for previousIndex >= 0 && dataSembako[previousIndex].kode > tempProduct.kode {
-			dataSembako[previousIndex+1] = dataSembako[previousIndex]
-			previousIndex--
-		}
-
-		dataSembako[previousIndex+1] = tempProduct
-	}
-
-	return dataSembako
-}
 
 func binarySearchPreparationSort(dataSembako tabSembako, jumlahData int) tabSembako {
 	/*dataSembako dan jumlahData terdefinisi dan jumlahData menyatakan banyaknya data yang akan diurutkan.
-	  mengemvalikan dataSembako yang telah terurut menaik(ascending) berdasarkan nama produk.*/
+   mengemvalikan dataSembako yang telah terurut menaik(ascending) berdasarkan nama produk.*/
 	var currentIndex, previousIndex int
 	var tempProduct daftarSembako
 
@@ -393,14 +377,14 @@ func binarySearchPreparationSort(dataSembako tabSembako, jumlahData int) tabSemb
 
 func cariProduk(dataSembako tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi.
-		FS : - Menampilkan data produk yang dicari berdasarkan pilihan pengguna.
-	   - Jika memilih pencarian berdasarkan kode, pencarian dilakukan
-	     dengan Sequential Search.
-	   - Jika memilih pencarian berdasarkan nama, pencarian dilakukan
-	     dengan Binary Search.
-	   - Jika produk tidak ditemukan, ditampilkan pesan bahwa produk
-	     tidak ditemukan.
-	*/
+	FS : - Menampilkan data produk yang dicari berdasarkan pilihan pengguna.
+   - Jika memilih pencarian berdasarkan kode, pencarian dilakukan
+     dengan Sequential Search.
+   - Jika memilih pencarian berdasarkan nama, pencarian dilakukan
+     dengan Binary Search.
+   - Jika produk tidak ditemukan, ditampilkan pesan bahwa produk
+     tidak ditemukan.
+*/
 	var pilihanSearch, productIndex int
 	var namaProduk, kodeProduk string
 
@@ -463,12 +447,12 @@ func cariProduk(dataSembako tabSembako, jumlahData int) {
 func editProduk(dataSembako *tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi dan jumlahData menyatakan banyaknya data produk yang tersimpan.
 
-	   FS : Jika kode produk ditemukan, pengguna mengonfirmasi edit, dan kategori yang dipilih valid, maka data produk diperbarui
-	     sesuai data baru yang diinputkan.
-	   - Jika kode produk tidak ditemukan, ditampilkan pesan "Produk tidak ditemukan" dan data tidak berubah.
-	   - Jika pengguna membatalkan edit, data tidak berubah.
-	   - Jika kategori tidak valid, kategori produk tidak diubah.
-	*/
+   FS : Jika kode produk ditemukan, pengguna mengonfirmasi edit, dan kategori yang dipilih valid, maka data produk diperbarui
+     sesuai data baru yang diinputkan.
+   - Jika kode produk tidak ditemukan, ditampilkan pesan "Produk tidak ditemukan" dan data tidak berubah.
+   - Jika pengguna membatalkan edit, data tidak berubah.
+   - Jika kategori tidak valid, kategori produk tidak diubah.
+*/
 	var kodeProduk string
 	var jawab string
 	var pilihanKategori, productIndex, stokbaru int
@@ -522,12 +506,12 @@ func editProduk(dataSembako *tabSembako, jumlahData int) {
 		}
 	}
 }
-
+	
 func hapusProduk(dataSembako *tabSembako, jumlahData *int) {
 	/* IS : dataSembako dan jumlahData terdefinisi dan jumlahData menyatakan banyaknya data produk yang tersimpan.
 	   FS : -Jika produk ditemukan dan pengguna mengonfirmasi penghapusan, maka produk dihapus dari dataSembako dan jumlahData berkurang 1.
 	   - Jika produk tidak ditemukan atau penghapusan dibatalkan, data tidak berubah.
-	*/
+*/
 	var kodeProduk string
 	var productIndex, index int
 	var jawab string
@@ -549,7 +533,7 @@ func hapusProduk(dataSembako *tabSembako, jumlahData *int) {
 		if jawab == "No" {
 			fmt.Println("Tidak jadi hapus data.")
 		} else if jawab == "Yes" {
-
+			
 			for index = productIndex; index < *jumlahData-1; index++ {
 				(*dataSembako)[index] = (*dataSembako)[index+1]
 			}
@@ -567,8 +551,8 @@ func hapusProduk(dataSembako *tabSembako, jumlahData *int) {
 
 func sortNamaUntukPencarian(dataSembako *tabSembako, jumlahData int) {
 	/* IS : dataSembako berisi sejumlah data produk dan jumlahData menyatakan banyaknya data yang tersimpan.
-	   FS : Seluruh data produk terurut secara ascending berdasarkan field nama menggunakan metode Insertion Sort.
-	*/
+   FS : Seluruh data produk terurut secara ascending berdasarkan field nama menggunakan metode Insertion Sort.
+*/
 	var currentIndex, previousIndex int
 	var tempProduct daftarSembako
 	for currentIndex = 1; currentIndex < jumlahData; currentIndex++ {
@@ -586,8 +570,8 @@ func sortNamaUntukPencarian(dataSembako *tabSembako, jumlahData int) {
 
 func selectionSortByStok(dataSembako *tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi, dengan jumlahData >= 0.
-	   FS : Data produk pada dataSembako terurut menaik (ascending)berdasarkan jumlah stok menggunakan metode Selection Sort.
-	*/
+   FS : Data produk pada dataSembako terurut menaik (ascending)berdasarkan jumlah stok menggunakan metode Selection Sort.
+*/
 	var currentIndex, minimumIndex, nextIndex int
 	var tempProduct daftarSembako
 	for currentIndex = 0; currentIndex < jumlahData-1; currentIndex++ {
@@ -607,8 +591,8 @@ func selectionSortByStok(dataSembako *tabSembako, jumlahData int) {
 
 func insertionSortByHarga(dataSembako *tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi, dengan jumlahData >= 0.
-	   FS : Data produk pada dataSembako terurut menaik (ascending)berdasarkan harga menggunakan metode Insertion Sort.
-	*/
+   FS : Data produk pada dataSembako terurut menaik (ascending)berdasarkan harga menggunakan metode Insertion Sort.
+*/
 	var currentIndex, previousIndex int
 	var tempProduct daftarSembako
 	for currentIndex = 1; currentIndex < jumlahData; currentIndex++ {
@@ -626,13 +610,13 @@ func insertionSortByHarga(dataSembako *tabSembako, jumlahData int) {
 
 func urutkanProduk(dataSembako *tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi.
-	   FS :
-	   - Data produk terurut sesuai pilihan pengguna:
-	     1. berdasarkan nama produk,
-	     2. berdasarkan stok produk,
-	     3. berdasarkan harga produk.
-	   - Jika pilihan tidak valid, data tidak berubah.
-	*/
+   FS :
+   - Data produk terurut sesuai pilihan pengguna:
+     1. berdasarkan nama produk,
+     2. berdasarkan stok produk,
+     3. berdasarkan harga produk.
+   - Jika pilihan tidak valid, data tidak berubah.
+*/
 	var pilihanSort int
 
 	fmt.Println()
@@ -644,9 +628,9 @@ func urutkanProduk(dataSembako *tabSembako, jumlahData int) {
 	fmt.Scan(&pilihanSort)
 
 	if pilihanSort == 1 {
-		sortNamaUntukPencarian(dataSembako, jumlahData)
-		fmt.Println("Produk berhasil diurutkan berdasarkan nama")
-		tampilProduk(*dataSembako, jumlahData)
+	sortNamaUntukPencarian(dataSembako, jumlahData)
+	fmt.Println("Produk berhasil diurutkan berdasarkan nama")
+	tampilProduk(*dataSembako, jumlahData)
 
 	} else if pilihanSort == 2 {
 		selectionSortByStok(dataSembako, jumlahData)
@@ -665,11 +649,11 @@ func urutkanProduk(dataSembako *tabSembako, jumlahData int) {
 
 func laporanBarang(dataSembako tabSembako, jumlahData int) {
 	/* IS : dataSembako dan jumlahData terdefinisi.
-	   FS :
-	   - Menampilkan total seluruh barang masuk.
-	   - Menampilkan total seluruh barang keluar.
-	   - Menampilkan seluruh data produk yang tersimpan.
-	*/
+   FS :
+   - Menampilkan total seluruh barang masuk.
+   - Menampilkan total seluruh barang keluar.
+   - Menampilkan seluruh data produk yang tersimpan.
+*/
 	var totalBarangMasuk int
 	var totalBarangKeluar int
 	var productIndex int
@@ -691,11 +675,11 @@ func laporanBarang(dataSembako tabSembako, jumlahData int) {
 
 func cariStokEkstrem(dataSembako tabSembako, jumlahData int) {
 	/* IS : dataSembako berisi sejumlah data produk.
-	   FS :
-	   - Menampilkan data produk yang memiliki stok maksimum
-	     dan stok minimum.
-	   - Jika tidak ada data produk, ditampilkan pesan yang sesuai.
-	*/
+   FS :
+   - Menampilkan data produk yang memiliki stok maksimum
+     dan stok minimum.
+   - Jika tidak ada data produk, ditampilkan pesan yang sesuai.
+*/
 	var maximumIndex, minimumIndex, productIndex int
 
 	if jumlahData == 0 {
@@ -727,7 +711,7 @@ func cariStokEkstrem(dataSembako tabSembako, jumlahData int) {
 	}
 }
 
-func main() {
+func main() { 
 	/*Program utama yang menginisialisasi data awal, menampilkan menu utama, membaca pilihan pengguna,
 	dan memanggil fungsi atau prosedur yang sesuai hingga pengguna memilih keluar dari program.*/
 	var dataSembako tabSembako
